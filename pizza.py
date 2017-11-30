@@ -1,3 +1,4 @@
+#
 from tkinter import *
 
 
@@ -25,7 +26,7 @@ class Pizza:
         frame2 = Frame(window)
         frame2.pack()
         
-    #create radio buttons for pizza size
+        #create radio buttons for pizza size
         self.v1 = IntVar()
 
         Label(frame2, text = "Choose Pizza Size:").grid(row = 1, column = 1, sticky = W)
@@ -40,7 +41,7 @@ class Pizza:
 
 
 
-         #create radio buttons for crust
+        #create radio buttons for crust
         self.v2 = IntVar()
 
         Label(frame2, text = "Choose Pizza Crust:").grid(row = 1, column = 4)
@@ -55,7 +56,6 @@ class Pizza:
 
 
         # create label for checkbutton
-
         Label(frame2, text = "Choose Toppings:").grid(row = 5,column = 1)
 
 
@@ -103,7 +103,7 @@ class Pizza:
         # creat label for extra items
         Label(frame2, text = "Extra Items:").grid(row = 9, column = 1,sticky =  W)
 
-        # create checkbuttons for extrA items
+        # create checkbuttons for extra items
         self.bread = IntVar()
         self.bread.set(0)
         Checkbutton(frame2, text = "Cheese Bread", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
@@ -116,7 +116,7 @@ class Pizza:
 
 
 
-         # create label variable and label
+        # create label variable and label
         self.total = StringVar()
         Label(frame2,textvariable = self.total).grid(row = 15,padx = 6,pady = 6, column = 2)
         
@@ -130,7 +130,7 @@ class Pizza:
 
         
 
-          # create discount button
+        # create discount button
         Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 17, pady = 6,padx = 6, column = 1, sticky = W)
 
         
@@ -145,7 +145,7 @@ class Pizza:
         
         Label(frame2,textvariable = self.discount).grid(row = 15,padx = 6,pady = 6, column = 4)
         
-         # create windows loop
+        # create windows loop
         window.mainloop()
 
 
