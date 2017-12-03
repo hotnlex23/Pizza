@@ -25,7 +25,7 @@ class Pizza:
         frame2 = Frame(window)
         frame2.pack()
         
-    #create radio buttons for pizza size
+        #create radio buttons for pizza size
         self.v1 = IntVar()
 
         Label(frame2, text = "Choose Pizza Size:").grid(row = 1, column = 1, sticky = W)
@@ -40,7 +40,7 @@ class Pizza:
 
 
 
-         #create radio buttons for crust
+        #create radio buttons for crust
         self.v2 = IntVar()
 
         Label(frame2, text = "Choose Pizza Crust:").grid(row = 1, column = 4)
@@ -55,7 +55,6 @@ class Pizza:
 
 
         # create label for checkbutton
-
         Label(frame2, text = "Choose Toppings:").grid(row = 5,column = 1)
 
 
@@ -63,7 +62,7 @@ class Pizza:
 
         # create variables and checkbuttons for toppings
         self.pep = IntVar()
-        self.pep.set(0)
+        self.pep.set(1)
         Checkbutton(frame2, text = "Pepperoni", variable = self.pep).grid(row = 6, padx = 6,pady = 6,column = 2, sticky = W)
         
         self.sausage = IntVar()
@@ -87,7 +86,7 @@ class Pizza:
         Checkbutton(frame2, text = "Olives", variable = self.olives).grid(row = 7,padx = 6,pady = 6, column = 3, sticky = W)
         
         self.mush = IntVar()
-        self.mush.set(0)
+        self.mush.set(1)
         Checkbutton(frame2, text = "Mushrooms", variable = self.mush).grid(row = 7,padx = 6,pady = 6, column = 4, sticky = W)
         
         self.onions = IntVar()
@@ -103,20 +102,20 @@ class Pizza:
         # creat label for extra items
         Label(frame2, text = "Extra Items:").grid(row = 9, column = 1,sticky =  W)
 
-        # create checkbuttons for extrA items
+        # create checkbuttons for extra items
         self.bread = IntVar()
-        self.bread.set(0)
+        self.bread.set(1)
         Checkbutton(frame2, text = "Cheese Bread", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
         self.wings = IntVar()
-        self.wings.set(0)
+        self.wings.set(1)
         Checkbutton(frame2, text = "Wings", variable = self.wings).grid(row = 10,padx = 6,pady = 26, column = 3)
         self.rolls = IntVar()
-        self.rolls.set(0)
+        self.rolls.set(1)
         Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
 
 
 
-         # create label variable and label
+        # create label variable and label
         self.total = StringVar()
         Label(frame2,textvariable = self.total).grid(row = 15,padx = 6,pady = 6, column = 2)
         
@@ -130,7 +129,7 @@ class Pizza:
 
         
 
-          # create discount button
+        # create discount button
         Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 17, pady = 6,padx = 6, column = 1, sticky = W)
 
         
@@ -145,45 +144,103 @@ class Pizza:
         
         Label(frame2,textvariable = self.discount).grid(row = 15,padx = 6,pady = 6, column = 4)
         
-         # create windows loop
+        # create windows loop
         window.mainloop()
 
+       
 
-        
-
-    def calcTotal(self):
+    def pizzaSize(self):
         SMALL = 7.99
         MEDIUM = 10.99
         LARGE = 14.99
         
-          # get pizza size total
+        # get pizza size total
         if self.v1.get() == 1:
-            total = SMALL
+            size = SMALL
             
         elif self.v1.get() == 2:
-            total = MEDIUM
+            size = MEDIUM
 
         elif self.v1.get() == 3:
-                total = LARGE
-        self.total.set(format(total))
-       
+            size = LARGE
+        return size
         
+ 
+
+    
+    def pizzaCrust(self):
+
+        # pizza size plus type of crust
+        if self.v2.get() == 1:
+            crust = 1
+
+        elif self.v2.get() == 2:
+            crust = .50
+
+        elif self.v2.get() == 3:
+            crust = 0
+        return crust
+
+
+    def calcToppings(self):
+
+        toppings = 0
+
+        if self.pep.get():
+            toppings = toppings + 1
+
+        if self.sausage.get():
+            toppings = toppings + 1
+
+        if self.ham.get():
+            toppings = toppings + 1
+
+        if self.bacon.get():
+            toppings = toppings + 1
+
+        if self.peppers.get():
+            toppings = toppings + 1
+
+        if self.olives.get():
+            toppings = toppings + 1
+
+        if self.mush.get():
+            toppings = toppings + 1
+
+        if self.onions.get():
+            toppings = toppings + 1
+
+        return toppings
+
+
+
+
+    
+    
+
+    def calcTotal(self):
+
+        # calculation
+        total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings()
+        self.total.set(format(total))
+
+
+
+
         
               
     def calcDiscount(self):
-            SENIOR = .10
+        SENIOR = .10
 
-            total = self.calcTotal()
+        total = self.calcTotal()
 
-            discount = total - (total * SENIOR)
+        discount = total - (total * SENIOR)
 
-            self.discount.set(discount)
+        self.discount.set(discount)
 
-            
-        
+           
 
-
-
+   
 
 
 
@@ -193,26 +250,3 @@ class Pizza:
 
 
 Pizza()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
