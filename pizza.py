@@ -112,6 +112,42 @@ class Pizza:
         self.rolls = IntVar()
         self.rolls.set(1)
         Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
+        
+        
+          #__________________________________________________________________________________________________________________
+
+        # create name label
+        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 6,pady = 16, sticky = W)
+
+        
+         # create textbox
+        self.name = StringVar()
+        Entry(frame2, textvariable = self.name).grid(row = 11, column = 2)
+        
+
+
+        
+         # create name label
+        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 3,pady = 3, sticky = W)
+
+        
+         # create textbox
+        self.address = StringVar()
+        Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
+
+         # create name label
+        Label(frame2, text = "Phone:").grid(row = 13, column = 1,padx = 6,pady = 20, sticky = W)
+
+        
+         # create textbox
+        self.phone = StringVar()
+        Entry(frame2, textvariable = self.phone).grid(row = 13, column = 2)
+        
+
+        
+        #_______________________________________________________________________________________________________________
+
+
 
 
 
