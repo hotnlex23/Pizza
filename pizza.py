@@ -318,7 +318,9 @@ class Pizza:
            
     def receipt(self):
 
-        print(self.name)
+        print(self.name.get())
+        print(self.address.get())
+        print(self.phone.get())
    
 
 
