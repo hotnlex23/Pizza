@@ -1,4 +1,3 @@
-# Last Updated by: Cody 10/2 6:30 PM
 from tkinter import *
 
 
@@ -116,11 +115,60 @@ class Pizza:
 
 
 
+        #__________________________________________________________________________________________________________________
+
+        # create name label
+        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 6,pady = 16, sticky = W)
+
+        
+         # create textbox
+        self.name = StringVar()
+        Entry(frame2, textvariable = self.name).grid(row = 11, column = 2)
+        
+
+
+        
+         # create name label
+        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 3,pady = 3, sticky = W)
+
+        
+         # create textbox
+        self.address = StringVar()
+        Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
+
+         # create name label
+        Label(frame2, text = "Phone:").grid(row = 13, column = 1,padx = 6,pady = 20, sticky = W)
+
+        
+         # create textbox
+        self.phone = StringVar()
+        Entry(frame2, textvariable = self.phone).grid(row = 13, column = 2)
+        
+
+        
+        #_______________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
         # create label variable and label
         self.total = StringVar()
         Label(frame2,textvariable = self.total).grid(row = 15,padx = 6,pady = 6, column = 2)
         
+        
+        # creat confirm order button & label
 
+        Button(frame2, text = "Confirm Order", command = self.receipt).grid(row = 18, padx = 6, pady = 6, column = 1,sticky = W)
+
+        Label(frame2, textvariable = self.receipt).grid(row = 18, padx = 6, pady = 6, column = 2, sticky = W)
+        
+        
         # create calcualtion buttons
 
         Button(frame2, text = "Get Total", command = self.calcTotal).grid(row = 14,padx = 6,pady = 6, column = 1,sticky = W)
@@ -131,7 +179,7 @@ class Pizza:
         
 
         # create discount button
-        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 17, pady = 6,padx = 6, column = 1, sticky = W)
+        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 14, pady = 6,padx = 6, column = 3, sticky = W)
 
         
 
@@ -144,6 +192,21 @@ class Pizza:
         Label(frame2, text = "Discounted Total").grid(row = 14,padx = 6,pady = 6, column = 4)
         
         Label(frame2,textvariable = self.discount).grid(row = 15,padx = 6,pady = 6, column = 4)
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+        
         
         # create windows loop
         window.mainloop()
@@ -181,26 +244,82 @@ class Pizza:
         elif self.v2.get() == 3:
             crust = 0
         return crust
+
+
+    def calcToppings(self):
+
+        toppings = 0
+
+        if self.pep.get():
+            
+            toppings = toppings + 1
+
+        if self.sausage.get():
+            toppings = toppings + 1
+
+        if self.ham.get():
+            toppings = toppings + 1
+
+        if self.bacon.get():
+            toppings = toppings + 1
+
+        if self.peppers.get():
+            toppings = toppings + 1
+
+        if self.olives.get():
+            toppings = toppings + 1
+
+        if self.mush.get():
+            toppings = toppings + 1
+
+        if self.onions.get():
+            toppings = toppings + 1
+
+        return toppings
+
+
+    def calcExtra(self):
+
+        extra = 0
+
+        if self.bread.get():
+            extra = extra + 4.99
+
+        if self.wings.get():
+            extra = extra + 6.99
+
+        if self.rolls.get():
+            extra = extra + 5.99
+
+        return extra
+    
+    
     
 
     def calcTotal(self):
 
         # calculation
-        total = self.pizzaCrust() + self.pizzaSize()
+        total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings() + self.calcExtra()
         self.total.set(format(total))
+
+
+
+
+        
               
     def calcDiscount(self):
-        SENIOR = .10
+        SENIOR = .10       
 
-        total = self.calcTotal()
+        discount = float(self.total.get()) - float(self.total.get()) * SENIOR
+        discount = str(round(discount, 2))
 
-        discount = total - (total * SENIOR)
-
-        self.discount.set(discount)
+        self.discount.set(format(discount))
 
            
+    def receipt(self):
 
-
+        print(self.name)
+   
 
 
 
@@ -210,8 +329,3 @@ class Pizza:
 
 
 Pizza()
-
-
-
-
-
