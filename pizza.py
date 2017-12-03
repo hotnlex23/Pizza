@@ -127,7 +127,7 @@ class Pizza:
 
 
         
-         # create name label
+         # create address label
         Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 3,pady = 3, sticky = W)
 
         
@@ -135,7 +135,7 @@ class Pizza:
         self.address = StringVar()
         Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
 
-         # create name label
+         # create phone label
         Label(frame2, text = "Phone:").grid(row = 13, column = 1,padx = 6,pady = 20, sticky = W)
 
         
