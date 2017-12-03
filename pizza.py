@@ -112,9 +112,10 @@ class Pizza:
         self.rolls = IntVar()
         self.rolls.set(1)
         Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
-        
-        
-          #__________________________________________________________________________________________________________________
+
+
+
+        #__________________________________________________________________________________________________________________
 
         # create name label
         Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 6,pady = 16, sticky = W)
@@ -127,7 +128,7 @@ class Pizza:
 
 
         
-         # create address label
+         # create name label
         Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 3,pady = 3, sticky = W)
 
         
@@ -135,7 +136,7 @@ class Pizza:
         self.address = StringVar()
         Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
 
-         # create phone label
+         # create name label
         Label(frame2, text = "Phone:").grid(row = 13, column = 1,padx = 6,pady = 20, sticky = W)
 
         
@@ -146,6 +147,11 @@ class Pizza:
 
         
         #_______________________________________________________________________________________________________________
+
+
+
+
+
 
 
 
@@ -166,7 +172,7 @@ class Pizza:
         
 
         # create discount button
-        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 17, pady = 6,padx = 6, column = 1, sticky = W)
+        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 14, pady = 6,padx = 6, column = 3, sticky = W)
 
         
 
@@ -179,6 +185,21 @@ class Pizza:
         Label(frame2, text = "Discounted Total").grid(row = 14,padx = 6,pady = 6, column = 4)
         
         Label(frame2,textvariable = self.discount).grid(row = 15,padx = 6,pady = 6, column = 4)
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+        
         
         # create windows loop
         window.mainloop()
@@ -223,6 +244,7 @@ class Pizza:
         toppings = 0
 
         if self.pep.get():
+            
             toppings = toppings + 1
 
         if self.sausage.get():
@@ -249,15 +271,28 @@ class Pizza:
         return toppings
 
 
+    def calcExtra(self):
 
+        extra = 0
 
+        if self.bread.get():
+            extra = extra + 4.99
+
+        if self.wings.get():
+            extra = extra + 6.99
+
+        if self.rolls.get():
+            extra = extra + 5.99
+
+        return extra
+    
     
     
 
     def calcTotal(self):
 
         # calculation
-        total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings()
+        total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings() + self.calcExtra()
         self.total.set(format(total))
 
 
@@ -266,13 +301,12 @@ class Pizza:
         
               
     def calcDiscount(self):
-        SENIOR = .10
+        SENIOR = .10       
 
-        total = self.calcTotal()
+        discount = float(self.total.get()) - float(self.total.get()) * SENIOR
+        discount = str(round(discount, 2))
 
-        discount = total - (total * SENIOR)
-
-        self.discount.set(discount)
+        self.discount.set(format(discount))
 
            
 
