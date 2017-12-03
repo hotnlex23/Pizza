@@ -160,6 +160,10 @@ class Pizza:
         # create label variable and label
         self.total = StringVar()
         Label(frame2,textvariable = self.total).grid(row = 15,padx = 6,pady = 6, column = 2)
+
+
+
+        
         
         
         # creat confirm order button & label
@@ -197,7 +201,10 @@ class Pizza:
 
         
 
+        text = Text(window)
+        text.pack()
 
+        text.insert(END,self.name.get())
 
 
 
@@ -318,9 +325,7 @@ class Pizza:
            
     def receipt(self):
 
-        print(self.name.get())
-        print(self.address.get())
-        print(self.phone.get())
+            self.name
    
 
 
@@ -331,3 +336,4 @@ class Pizza:
 
 
 Pizza()
+
