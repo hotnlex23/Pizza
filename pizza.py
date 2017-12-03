@@ -1,4 +1,4 @@
-#
+# Last Updated by: Cody 10/2 6:30 PM
 from tkinter import *
 
 
@@ -63,7 +63,7 @@ class Pizza:
 
         # create variables and checkbuttons for toppings
         self.pep = IntVar()
-        self.pep.set(0)
+        self.pep.set(1)
         Checkbutton(frame2, text = "Pepperoni", variable = self.pep).grid(row = 6, padx = 6,pady = 6,column = 2, sticky = W)
         
         self.sausage = IntVar()
@@ -87,7 +87,7 @@ class Pizza:
         Checkbutton(frame2, text = "Olives", variable = self.olives).grid(row = 7,padx = 6,pady = 6, column = 3, sticky = W)
         
         self.mush = IntVar()
-        self.mush.set(0)
+        self.mush.set(1)
         Checkbutton(frame2, text = "Mushrooms", variable = self.mush).grid(row = 7,padx = 6,pady = 6, column = 4, sticky = W)
         
         self.onions = IntVar()
@@ -105,13 +105,13 @@ class Pizza:
 
         # create checkbuttons for extra items
         self.bread = IntVar()
-        self.bread.set(0)
+        self.bread.set(1)
         Checkbutton(frame2, text = "Cheese Bread", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
         self.wings = IntVar()
-        self.wings.set(0)
+        self.wings.set(1)
         Checkbutton(frame2, text = "Wings", variable = self.wings).grid(row = 10,padx = 6,pady = 26, column = 3)
         self.rolls = IntVar()
-        self.rolls.set(0)
+        self.rolls.set(1)
         Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
 
 
@@ -148,40 +148,57 @@ class Pizza:
         # create windows loop
         window.mainloop()
 
+       
 
-        
-
-    def calcTotal(self):
+    def pizzaSize(self):
         SMALL = 7.99
         MEDIUM = 10.99
         LARGE = 14.99
         
-          # get pizza size total
+        # get pizza size total
         if self.v1.get() == 1:
-            total = SMALL
+            size = SMALL
             
         elif self.v1.get() == 2:
-            total = MEDIUM
+            size = MEDIUM
 
         elif self.v1.get() == 3:
-                total = LARGE
+            size = LARGE
+        return size
+        
+ 
+
+    
+    def pizzaCrust(self):
+
+        # pizza size plus type of crust
+        if self.v2.get() == 1:
+            crust = 1
+
+        elif self.v2.get() == 2:
+            crust = .50
+
+        elif self.v2.get() == 3:
+            crust = 0
+        return crust
+    
+
+    def calcTotal(self):
+
+        # calculation
+        total = self.pizzaCrust() + self.pizzaSize()
         self.total.set(format(total))
-       
-        
-        
               
     def calcDiscount(self):
-            SENIOR = .10
+        SENIOR = .10
 
-            total = self.calcTotal()
+        total = self.calcTotal()
 
-            discount = total - (total * SENIOR)
+        discount = total - (total * SENIOR)
 
-            self.discount.set(discount)
+        self.discount.set(discount)
 
-            
-        
-
+           
 
 
 
@@ -193,6 +210,8 @@ class Pizza:
 
 
 Pizza()
+
+
 
 
 
