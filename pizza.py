@@ -7,29 +7,26 @@ class Pizza:
         window = Tk()
         window.title("Pizza Shop")
         
-       
-      
-
-
-       
+#---------------------------------------------------------------------------------------------------------------------------------
+# frame 1
 
         frame1 = Frame(window)
         frame1.pack()
-        
-
-        
 
 
         pizzaImage = PhotoImage(file ="image/pizza2.gif")
        
 
-
-        
-
         Label(frame1, image = pizzaImage).grid(row = 1, column = 3, pady = 20)
+
+#---------------------------------------------------------------------------------------------------------------------------------
+# frame 2
 
         frame2 = Frame(window)
         frame2.pack()
+
+#---------------------------------------------------------------------------------------------------------------------------------
+# create buttons for pizza size
         
         #create radio buttons for pizza size
         self.v1 = IntVar()
@@ -45,7 +42,8 @@ class Pizza:
        
         Radiobutton(frame2, text = "Large",variable = self.v1, value = 3).grid(row = 4, column = 2,sticky = W)
 
-
+#---------------------------------------------------------------------------------------------------------------------------------
+# create buttons for crust type
 
         #create radio buttons for crust
         self.v2 = IntVar()
@@ -61,12 +59,11 @@ class Pizza:
        
         Radiobutton(frame2, text = "Thin",variable = self.v2, value = 3).grid(row = 4,padx = 6, column = 5, sticky = W)
 
+#---------------------------------------------------------------------------------------------------------------------------------
+# create pizza toppings checkboxes
 
-        # create label for checkbutton
+        # create label for choose topping
         Label(frame2, text = "Choose Toppings:").grid(row = 5,column = 1)
-
-
-
 
         # create variables and checkbuttons for toppings
         self.pep = IntVar()
@@ -101,12 +98,10 @@ class Pizza:
         self.onions.set(0)
         Checkbutton(frame2, text = "Onions", variable = self.onions).grid(row = 7,padx = 6,pady = 6, column =5 , sticky = W)
 
-
-        # extra items checkboxes
-
+#---------------------------------------------------------------------------------------------------------------------------------
+# extra items checkboxes
+    
        
-
-        
         # creat label for extra items
         Label(frame2, text = "Extra Items:").grid(row = 9, column = 1,sticky =  W)
 
@@ -123,7 +118,8 @@ class Pizza:
 
 
 
-        #__________________________________________________________________________________________________________________
+#---------------------------------------------------------------------------------------------------------------------------------
+# create labels & textboxes for name, address, & phone number
 
         # create name label
         Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 2,pady = 1, sticky = W)
@@ -151,14 +147,14 @@ class Pizza:
 
         # create textbox
         self.state = StringVar()
-        Entry(frame2, textvariable = self.state).grid(row = 14, column = 2)
+        Entry(frame2, textvariable = self.state, width = 4).grid(row = 14, column = 2, sticky = W)
         
         # create name label
         Label(frame2, text = "Zip:").grid(row = 15, column = 1,padx = 1,pady = 1, sticky = W)
 
         # create textbox
         self.zip = StringVar()
-        Entry(frame2, textvariable = self.zip).grid(row = 15, column = 2)
+        Entry(frame2, textvariable = self.zip, width = 9).grid(row = 15, column = 2, sticky = W)
         
         # create name label
         Label(frame2, text = "Phone:").grid(row = 16, column = 1,padx = 1,pady = 1, sticky = W)
@@ -167,21 +163,16 @@ class Pizza:
         self.phone = StringVar()
         Entry(frame2, textvariable = self.phone).grid(row = 16, column = 2)
         
-
+#---------------------------------------------------------------------------------------------------------------------------------
+# create summary section
         
          # label for summary
         Label(frame2, text = "Summary").grid(row = 11,column = 4, sticky = E)
-
-        
-
-        #______________________________________________________________________________________________
         
          # label and variable for total in summary area
         self.total = StringVar()
         Label(frame2, text = "Subtotal").grid(row = 12, column = 4, sticky = W)
         Label(frame2, textvariable = self.total).grid(row = 12, column = 5,sticky = W)
-
-        #__________________________________________________________________________________________
 
         # label for discount in summary
         self.difference = StringVar()
@@ -195,73 +186,23 @@ class Pizza:
         # label for new total after discount
         self.discount = StringVar()
         Label(frame2, textvariable = self.discount).grid(row = 14, column = 5, sticky = W)
-        
-        #_______________________________________________________________________________________________________________
 
         # create calcualtion buttons
-
         Button(frame2,text = "Checkout" , command = self.calcTotal).grid(row = 16,padx = 6, pady = 6, column = 4,sticky = W)
-
-       
-
-
-       
-
-      
-       
 
         # create discount button
         Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 16, pady = 6, padx = 6, column = 5, sticky = W)
 
-         
-
-        
-       
-    
-        
+#--------------------------------------------------------------------------------------------------------------------------------
+# create processing functions
 
 
-              
-         #create new frame
-        frame3 = Frame(window)
-        frame3.pack() 
-
-        
-
-      
-        
-       
-
-       
-
-       
-
-        
-        
-
-       
-
-       
-
-       
-
-        
-        
-
-
-
-
-
-
-
-        
-        
         # create windows loop
         window.mainloop()
 
        
 
-    def pizzaSize(self):
+    def calcSize(self):
         SMALL = 7.99
         MEDIUM = 10.99
         LARGE = 14.99
@@ -276,13 +217,11 @@ class Pizza:
         elif self.v1.get() == 3:
             size = LARGE
         return size
-        
- 
 
     
-    def pizzaCrust(self):
+    def calcCrust(self):
 
-        # pizza size plus type of crust
+        # get pizza crust total
         if self.v2.get() == 1:
             crust = 1
 
@@ -296,6 +235,7 @@ class Pizza:
 
     def calcToppings(self):
 
+        # get pizza topping total
         toppings = 0
 
         if self.pep.get():
@@ -326,8 +266,9 @@ class Pizza:
         return toppings
 
 
-    def calcExtra(self):
+    def calcExtras(self):
 
+        # get extras total
         extra = 0
 
         if self.bread.get():
@@ -340,23 +281,16 @@ class Pizza:
             extra = extra + 5.99
 
         return extra
-    
-    
-    
+
 
     def calcTotal(self):
 
-        # calculation
-
-       
-        total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings() + self.calcExtra()
+        # total calculation
+        total = self.calcCrust() + self.calcSize() + self.calcToppings() + self.calcExtras()
             
         self.total.set(format(total))
 
 
-
-
-        
               
     def calcDiscount(self):
         SENIOR = .10       
