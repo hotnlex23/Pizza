@@ -20,13 +20,20 @@ class Pizza:
         
 
 
-        Label(frame1, text = "Pizza Shop").grid(row = 1, column = 3, pady = 20)
+        pizzaImage = PhotoImage(file ="image/pizza2.gif")
+       
+
+
+        
+
+        Label(frame1, image = pizzaImage).grid(row = 1, column = 3, pady = 20)
 
         frame2 = Frame(window)
         frame2.pack()
         
         #create radio buttons for pizza size
         self.v1 = IntVar()
+        self.v1.set(1)  # initializing the choice
 
         Label(frame2, text = "Choose Pizza Size:").grid(row = 1, column = 1, sticky = W)
         
@@ -42,6 +49,7 @@ class Pizza:
 
         #create radio buttons for crust
         self.v2 = IntVar()
+        self.v2.set(1)  # initializing the choice
 
         Label(frame2, text = "Choose Pizza Crust:").grid(row = 1, column = 4)
         
@@ -62,7 +70,7 @@ class Pizza:
 
         # create variables and checkbuttons for toppings
         self.pep = IntVar()
-        self.pep.set(1)
+        self.pep.set(0)
         Checkbutton(frame2, text = "Pepperoni", variable = self.pep).grid(row = 6, padx = 6,pady = 6,column = 2, sticky = W)
         
         self.sausage = IntVar()
@@ -86,7 +94,7 @@ class Pizza:
         Checkbutton(frame2, text = "Olives", variable = self.olives).grid(row = 7,padx = 6,pady = 6, column = 3, sticky = W)
         
         self.mush = IntVar()
-        self.mush.set(1)
+        self.mush.set(0)
         Checkbutton(frame2, text = "Mushrooms", variable = self.mush).grid(row = 7,padx = 6,pady = 6, column = 4, sticky = W)
         
         self.onions = IntVar()
@@ -104,13 +112,13 @@ class Pizza:
 
         # create checkbuttons for extra items
         self.bread = IntVar()
-        self.bread.set(1)
+        self.bread.set(0)
         Checkbutton(frame2, text = "Cheese Bread", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
         self.wings = IntVar()
-        self.wings.set(1)
+        self.wings.set(0)
         Checkbutton(frame2, text = "Wings", variable = self.wings).grid(row = 10,padx = 6,pady = 26, column = 3)
         self.rolls = IntVar()
-        self.rolls.set(1)
+        self.rolls.set(0)
         Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
 
 
@@ -118,87 +126,127 @@ class Pizza:
         #__________________________________________________________________________________________________________________
 
         # create name label
-        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 6,pady = 16, sticky = W)
+        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 2,pady = 1, sticky = W)
 
-        
-         # create textbox
+        # create textbox
         self.name = StringVar()
         Entry(frame2, textvariable = self.name).grid(row = 11, column = 2)
         
+        # create name label
+        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 1,pady = 1, sticky = W)
 
-
-        
-         # create name label
-        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 3,pady = 3, sticky = W)
-
-        
-         # create textbox
+        # create textbox
         self.address = StringVar()
         Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
-
-         # create name label
-        Label(frame2, text = "Phone:").grid(row = 13, column = 1,padx = 6,pady = 20, sticky = W)
-
         
-         # create textbox
+        # create name label
+        Label(frame2, text = "City:").grid(row = 13, column = 1,padx = 1,pady = 1, sticky = W)
+
+        # create textbox
+        self.city = StringVar()
+        Entry(frame2, textvariable = self.city).grid(row = 13, column = 2)
+        
+        # create name label
+        Label(frame2, text = "State:").grid(row = 14, column = 1,padx = 1,pady = 1, sticky = W)
+
+        # create textbox
+        self.state = StringVar()
+        Entry(frame2, textvariable = self.state).grid(row = 14, column = 2)
+        
+        # create name label
+        Label(frame2, text = "Zip:").grid(row = 15, column = 1,padx = 1,pady = 1, sticky = W)
+
+        # create textbox
+        self.zip = StringVar()
+        Entry(frame2, textvariable = self.zip).grid(row = 15, column = 2)
+        
+        # create name label
+        Label(frame2, text = "Phone:").grid(row = 16, column = 1,padx = 1,pady = 1, sticky = W)
+
+        # create textbox
         self.phone = StringVar()
-        Entry(frame2, textvariable = self.phone).grid(row = 13, column = 2)
+        Entry(frame2, textvariable = self.phone).grid(row = 16, column = 2)
         
 
+        
+         # label for summary
+        Label(frame2, text = "Summary").grid(row = 11,column = 4, sticky = E)
+
+        
+
+        #______________________________________________________________________________________________
+        
+         # label and variable for total in summary area
+        self.total = StringVar()
+        Label(frame2, text = "Subtotal").grid(row = 12, column = 4, sticky = W)
+        Label(frame2, textvariable = self.total).grid(row = 12, column = 5,sticky = W)
+
+        #__________________________________________________________________________________________
+
+        # label for discount in summary
+        self.difference = StringVar()
+
+        Label(frame2, text = " -").grid(row = 13, column = 4, sticky = E)
+        Label(frame2, textvariable = self.difference).grid(row = 13, column = 5, sticky = W)
+
+        # label for total in summary 
+        Label(frame2, text = "Total").grid(row = 14, column = 4, sticky = W)
+
+        # label for new total after discount
+        self.discount = StringVar()
+        Label(frame2, textvariable = self.discount).grid(row = 14, column = 5, sticky = W)
         
         #_______________________________________________________________________________________________________________
 
-
-
-
-
-
-
-
-
-
-        # create label variable and label
-        self.total = StringVar()
-        Label(frame2,textvariable = self.total).grid(row = 15,padx = 6,pady = 6, column = 2)
-        
-        
-        # creat confirm order button & label
-
-        Button(frame2, text = "Confirm Order", command = self.receipt).grid(row = 18, padx = 6, pady = 6, column = 1,sticky = W)
-
-        Label(frame2, textvariable = self.receipt).grid(row = 18, padx = 6, pady = 6, column = 2, sticky = W)
-        
-        
         # create calcualtion buttons
 
-        Button(frame2, text = "Get Total", command = self.calcTotal).grid(row = 14,padx = 6,pady = 6, column = 1,sticky = W)
+        Button(frame2,text = "Checkout" , command = self.calcTotal).grid(row = 16,padx = 6, pady = 6, column = 4,sticky = W)
 
-        Label(frame2, text = "Total").grid(row = 14,padx = 6,pady = 6, column = 2)
+       
 
 
-        
+       
+
+      
+       
 
         # create discount button
-        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 14, pady = 6,padx = 6, column = 3, sticky = W)
+        Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 16, pady = 6, padx = 6, column = 5, sticky = W)
 
-        
+         
 
         
        
+    
+        
 
-        self.discount = StringVar()
+
+              
+         #create new frame
+        frame3 = Frame(window)
+        frame3.pack() 
+
+        
 
       
-        Label(frame2, text = "Discounted Total").grid(row = 14,padx = 6,pady = 6, column = 4)
         
-        Label(frame2,textvariable = self.discount).grid(row = 15,padx = 6,pady = 6, column = 4)
+       
 
+       
 
+       
 
         
+        
 
+       
 
+       
 
+       
+
+        
+        
 
 
 
@@ -299,7 +347,10 @@ class Pizza:
     def calcTotal(self):
 
         # calculation
+
+       
         total = self.pizzaCrust() + self.pizzaSize() + self.calcToppings() + self.calcExtra()
+            
         self.total.set(format(total))
 
 
@@ -310,24 +361,22 @@ class Pizza:
     def calcDiscount(self):
         SENIOR = .10       
 
+        # calculate discount for senoirs
         discount = float(self.total.get()) - float(self.total.get()) * SENIOR
-        discount = str(round(discount, 2))
+        discount = float(round(discount, 2))
 
+        
         self.discount.set(format(discount))
 
+        # calculates the differnce so it can display in the label
+        difference = float(self.total.get()) * SENIOR
+
+        difference = float(round(difference,2))
+        
+        self.difference.set(format(difference))
+
            
-    def receipt(self):
-
-        print(self.name.get())
-        print(self.address.get())
-        print(self.phone.get())
-   
-
-
-
-
-
-
-
-
+    
+    
+        
 Pizza()
