@@ -309,8 +309,5 @@ class Pizza:
         
         self.difference.set(format(difference))
 
-           
-    
-    
         
 Pizza()
