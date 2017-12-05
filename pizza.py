@@ -12,7 +12,7 @@ from tkinter import *
 class Pizza:
     def __init__(self):
         window = Tk()
-        window.title("Pizza Shop")
+        window.title("The Pizza Shop")
         
 #---------------------------------------------------------------------------------------------------------------------------------
 # frame 1
@@ -24,7 +24,7 @@ class Pizza:
         pizzaImage = PhotoImage(file ="image/pizza2.gif")
        
 
-        Label(frame1, image = pizzaImage).grid(row = 1, column = 3, pady = 20)
+        Label(frame1, image = pizzaImage).grid(row = 1, column = 3)
 
 #---------------------------------------------------------------------------------------------------------------------------------
 # frame 2
@@ -41,13 +41,19 @@ class Pizza:
 
         Label(frame2, text = "Choose Pizza Size:").grid(row = 1, column = 1, sticky = W)
         
-        Radiobutton(frame2, text = "Small",variable = self.v1, value = 1).grid(row = 2, column = 2,sticky = W)
+        Radiobutton(frame2, text = "Small  ($7.99)",variable = self.v1, value = 1).grid(row = 2, column = 2,sticky = W)
 
         
-        Radiobutton(frame2, text = "Medium",variable = self.v1, value = 2).grid(row = 3, column = 2,sticky = W)
+
+        
+        Radiobutton(frame2, text = "Medium  ($10.99)",variable = self.v1, value = 2).grid(row = 3, column = 2,sticky = W)
+
+        
 
        
-        Radiobutton(frame2, text = "Large",variable = self.v1, value = 3).grid(row = 4, column = 2,sticky = W)
+        Radiobutton(frame2, text = "Large  ($14.99)",variable = self.v1, value = 3).grid(row = 4, column = 2,sticky = W)
+
+        
 
 #---------------------------------------------------------------------------------------------------------------------------------
 # create buttons for crust type
@@ -58,10 +64,14 @@ class Pizza:
 
         Label(frame2, text = "Choose Pizza Crust:").grid(row = 1, column = 4)
         
-        Radiobutton(frame2, text = "Original",variable = self.v2, value = 1).grid(row = 2,padx = 6, column = 5, sticky = W)
+        Radiobutton(frame2, text = "Original (+ $1.00)",variable = self.v2, value = 1).grid(row = 2,padx = 6, column = 5, sticky = W)
 
         
-        Radiobutton(frame2, text = "Pan",variable = self.v2, value = 2).grid(row = 3,padx = 6, column = 5, sticky = W)
+
+        
+        Radiobutton(frame2, text = "Pan  (+$.50)",variable = self.v2, value = 2).grid(row = 3,padx = 6, column = 5, sticky = W)
+
+        
 
        
         Radiobutton(frame2, text = "Thin",variable = self.v2, value = 3).grid(row = 4,padx = 6, column = 5, sticky = W)
@@ -115,13 +125,13 @@ class Pizza:
         # create checkbuttons for extra items
         self.bread = IntVar()
         self.bread.set(0)
-        Checkbutton(frame2, text = "Cheese Bread", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
+        Checkbutton(frame2, text = "Cheese Bread  ($4.99)", variable = self.bread).grid(row = 10, padx = 6,pady = 26,column = 2)
         self.wings = IntVar()
         self.wings.set(0)
-        Checkbutton(frame2, text = "Wings", variable = self.wings).grid(row = 10,padx = 6,pady = 26, column = 3)
+        Checkbutton(frame2, text = "Wings  ($6.99)", variable = self.wings).grid(row = 10,padx = 6,pady = 26, column = 3)
         self.rolls = IntVar()
         self.rolls.set(0)
-        Checkbutton(frame2, text = "Cinnamon Rolls", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
+        Checkbutton(frame2, text = "Cinnamon Rolls  ($5.99)", variable = self.rolls).grid(row = 10,padx = 6,pady = 26, column = 4)
 
 
 
