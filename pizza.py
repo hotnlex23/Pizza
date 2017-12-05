@@ -203,65 +203,68 @@ class Pizza:
        
 
     def calcSize(self):
-        SMALL = 7.99
-        MEDIUM = 10.99
-        LARGE = 14.99
+        # pizza size list prices
+        list1 = [7.99, 10.99, 14.99]
         
         # get pizza size total
         if self.v1.get() == 1:
-            size = SMALL
+            size = list1[0]
             
         elif self.v1.get() == 2:
-            size = MEDIUM
+            size = list1[1]
 
         elif self.v1.get() == 3:
-            size = LARGE
+            size = list1[2]
         return size
 
     
     def calcCrust(self):
-
+        # pizza crust list prices
+        list2 = [0, .50, 1]
+        
         # get pizza crust total
         if self.v2.get() == 1:
-            crust = 1
+            crust = list2[2]
 
         elif self.v2.get() == 2:
-            crust = .50
+            crust = list2[1]
 
         elif self.v2.get() == 3:
-            crust = 0
+            crust = list2[0]
         return crust
 
 
     def calcToppings(self):
+        # pizza Toppings list prices
+        list3 = [.25, .50, .75, 1]
 
         # get pizza topping total
         toppings = 0
 
         if self.pep.get():
             
-            toppings = toppings + 1
+            toppings = toppings + list3[2]
 
         if self.sausage.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[3]
 
         if self.ham.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[2]
 
         if self.bacon.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[3]
 
         if self.peppers.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[0]
 
         if self.olives.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[1]
 
         if self.mush.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[1]
 
         if self.onions.get():
-            toppings = toppings + 1
+            toppings = toppings + list3[0]
 
         return toppings
 
@@ -309,5 +312,8 @@ class Pizza:
         
         self.difference.set(format(difference))
 
+           
+    
+    
         
 Pizza()
