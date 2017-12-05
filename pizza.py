@@ -195,6 +195,7 @@ class Pizza:
 
         # label for tax in summary
         self.tax = StringVar()
+        self.tax.set("$0.00")
 
         Label(frame2, text = "Tax").grid(row = 13, column = 4, sticky = W)
         Label(frame2, textvariable = self.tax).grid(row = 13, column = 5,sticky = W)
@@ -212,9 +213,11 @@ class Pizza:
 
         # label for total in summary 
         Label(frame2, text = "Total").grid(row = 15, column = 4, sticky = W)
+        
 
         # label for new total after discount
         self.discount = StringVar()
+        self.discount.set("$0.00")
         
         Label(frame2, textvariable = self.discount).grid(row = 15, column = 5, sticky = W)
 
@@ -330,13 +333,13 @@ class Pizza:
 
         tax = total * RATE
 
-        discount = total + tax
+        taxTotal = total + tax
 
         self.plus.set("+")
 
         tax = float(round(tax, 2))
         
-        discount = float(round(discount,2))
+        taxTotal = float(round(taxTotal,2))
 
         self.tax.set('${:,.2f}'.format(tax))
 
@@ -346,9 +349,9 @@ class Pizza:
 
         self.total2 = StringVar()
 
-        self.total2.set(format(total))
+        self.total2.set(format(taxTotal))
 
-        self.discount.set('${:,.2f}'.format(discount))
+        self.discount.set('${:,.2f}'.format(taxTotal))
 
         self.minus.set("")
         
@@ -393,10 +396,10 @@ class Pizza:
         self.state.set("")
         self.zip.set("")
         self.phone.set("")
-        self.total.set(0)
+        self.total.set("$0.00")
         self.difference.set("")
-        self.discount.set("")
+        self.discount.set("$0.00")
         self.minus.set("")
-        self.tax.set("")
+        self.tax.set("$0.00")
         
 Pizza()
