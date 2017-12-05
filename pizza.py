@@ -1,3 +1,10 @@
+# PROLOG SECTION
+# pizza.py
+# GUI Pizza Pricing
+# November 16th, 2017
+# Timothy Weaver, Cody Fenwick, Adam Endres, & Samuel Hatcher
+# Unresolved bugs: None
+
 from tkinter import *
 
 
@@ -122,42 +129,42 @@ class Pizza:
 # create labels & textboxes for name, address, & phone number
 
         # create name label
-        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 2,pady = 1, sticky = W)
+        Label(frame2, text = "Name:").grid(row = 11, column = 1,padx = 2,pady = 1, sticky = E)
 
         # create textbox
         self.name = StringVar()
         Entry(frame2, textvariable = self.name).grid(row = 11, column = 2)
         
         # create name label
-        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 1,pady = 1, sticky = W)
+        Label(frame2, text = "Address:").grid(row = 12, column = 1,padx = 1,pady = 1, sticky = E)
 
         # create textbox
         self.address = StringVar()
         Entry(frame2, textvariable = self.address).grid(row = 12, column = 2)
         
         # create name label
-        Label(frame2, text = "City:").grid(row = 13, column = 1,padx = 1,pady = 1, sticky = W)
+        Label(frame2, text = "City:").grid(row = 13, column = 1,padx = 1,pady = 1, sticky = E)
 
         # create textbox
         self.city = StringVar()
         Entry(frame2, textvariable = self.city).grid(row = 13, column = 2)
         
         # create name label
-        Label(frame2, text = "State:").grid(row = 14, column = 1,padx = 1,pady = 1, sticky = W)
+        Label(frame2, text = "State:").grid(row = 14, column = 1,padx = 1,pady = 1, sticky = E)
 
         # create textbox
         self.state = StringVar()
         Entry(frame2, textvariable = self.state, width = 4).grid(row = 14, column = 2, sticky = W)
         
         # create name label
-        Label(frame2, text = "Zip:").grid(row = 15, column = 1,padx = 1,pady = 1, sticky = W)
+        Label(frame2, text = "Zip:").grid(row = 15, column = 1,padx = 1,pady = 1, sticky = E)
 
         # create textbox
         self.zip = StringVar()
         Entry(frame2, textvariable = self.zip, width = 9).grid(row = 15, column = 2, sticky = W)
         
         # create name label
-        Label(frame2, text = "Phone:").grid(row = 16, column = 1,padx = 1,pady = 1, sticky = W)
+        Label(frame2, text = "Phone:").grid(row = 16, column = 1,padx = 1,pady = 1, sticky = E)
 
         # create textbox
         self.phone = StringVar()
