@@ -326,21 +326,27 @@ class Pizza:
         total = self.calcCrust() + self.calcSize() + self.calcToppings() + self.calcExtras()
         total = round(total, 2)
 
-        rate = .06
+        RATE = .06
 
-        tax = total * rate
+        tax = total * RATE
 
-        difference = total + tax
+        discount = total + tax
 
         self.plus.set("+")
 
         tax = float(round(tax, 2))
         
-        discount = float(round(difference,2))
+        discount = float(round(discount,2))
 
         self.tax.set('${:,.2f}'.format(tax))
 
+        
+
         self.total.set('${:,.2f}'.format(total))
+
+        self.total2 = StringVar()
+
+        self.total2.set(format(total))
 
         self.discount.set('${:,.2f}'.format(discount))
 
@@ -350,17 +356,17 @@ class Pizza:
 
               
     def calcDiscount(self):
-        amount = .10       
+        AMOUNT = .10       
 
         # calculate discount for senoirs
-        discount = float(self.total.get()) - float(self.total.get()) * amount
+        discount = float(self.total2.get()) - float(self.total2.get()) * AMOUNT
         discount = float(round(discount, 2))
 
         
         self.discount.set('${:,.2f}'.format(discount))
 
         # calculates the differnce so it can display in the label
-        difference = float(self.total.get()) * amount
+        difference = float(self.total2.get()) * AMOUNT
 
         difference = float(round(difference,2))
         
