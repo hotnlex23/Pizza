@@ -103,7 +103,7 @@ class Pizza:
     
        
         # creat label for extra items
-        Label(frame2, text = "Extra Items:").grid(row = 9, column = 1,sticky =  W)
+        Label(frame2, text = "Extra Items:").grid(row = 9, column = 1,sticky =  E)
 
         # create checkbuttons for extra items
         self.bread = IntVar()
@@ -171,24 +171,32 @@ class Pizza:
         
          # label and variable for total in summary area
         self.total = StringVar()
+        self.total.set(0)
+        
         Label(frame2, text = "Subtotal").grid(row = 12, column = 4, sticky = W)
         Label(frame2, textvariable = self.total).grid(row = 12, column = 5,sticky = W)
 
         # label for discount in summary
         self.difference = StringVar()
-
-        Label(frame2, text = " -").grid(row = 13, column = 4, sticky = E)
         Label(frame2, textvariable = self.difference).grid(row = 13, column = 5, sticky = W)
+
+        self.minus = StringVar()
+        Label(frame2, textvariable = self.minus).grid(row = 13, column = 4, sticky = E)
+        
 
         # label for total in summary 
         Label(frame2, text = "Total").grid(row = 14, column = 4, sticky = W)
 
         # label for new total after discount
         self.discount = StringVar()
+        
         Label(frame2, textvariable = self.discount).grid(row = 14, column = 5, sticky = W)
 
+        # creat buttons
+        Button(frame2,text = "Clear", command = self.clear).grid(row = 16, column = 3)
+        
         # create calcualtion buttons
-        Button(frame2,text = "Checkout" , command = self.calcTotal).grid(row = 16,padx = 6, pady = 6, column = 4,sticky = W)
+        Button(frame2,text = "Checkout", command = self.calcTotal).grid(row = 16,padx = 6, pady = 6, column = 4,sticky = W)
 
         # create discount button
         Button(frame2, text = "Discount", command = self.calcDiscount).grid(row = 16, pady = 6, padx = 6, column = 5, sticky = W)
@@ -290,7 +298,8 @@ class Pizza:
 
         # total calculation
         total = self.calcCrust() + self.calcSize() + self.calcToppings() + self.calcExtras()
-            
+        total = round(total, 2)
+        
         self.total.set(format(total))
 
 
@@ -312,8 +321,30 @@ class Pizza:
         
         self.difference.set(format(difference))
 
-           
-    
-    
+        self.minus.set("-")
+
+    def clear(self):
+
+        self.pep.set(0)
+        self.sausage.set(0)
+        self.ham.set(0)
+        self.bacon.set(0)
+        self.peppers.set(0)
+        self.olives.set(0)
+        self.onions.set(0)
+        self.mush.set(0)
+        self.bread.set(0)
+        self.wings.set(0)
+        self.rolls.set(0)
+        self.name.set("")
+        self.address.set("")
+        self.city.set("")
+        self.state.set("")
+        self.zip.set("")
+        self.phone.set("")
+        self.total.set(0)
+        self.difference.set("")
+        self.discount.set("")
+        self.minus.set("")
         
 Pizza()
